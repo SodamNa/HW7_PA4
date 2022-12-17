@@ -26,10 +26,10 @@ private:
 
         grid[i][j] = '0'; // To avoid duplication, mark the searched element as '0'
         vector<int> dir({-1, 0, 1, 0, -1}); // Direction to search surroundings 
-        for (int index = 0; index < dir.size() - 1; index++) {
-            int rowIdx = i + dir[index]; 
-            int colIdx = j + dir[index + 1];
-            dfs(grid, rowIdx, colIdx);
+        for (int index = 0; index < dir.size() - 1; index++) { // Repeat until all surroundings are searched whether they are '0' or not
+            int rowIdx = i + dir[index]; // Move to near on the same row
+            int colIdx = j + dir[index + 1]; // Move to near on the same column
+            dfs(grid, rowIdx, colIdx); // Excute the recursion until the surroundings are all '0'
         }
     }
 };
