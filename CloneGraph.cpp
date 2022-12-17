@@ -18,7 +18,7 @@ public:
     }
 };
 */
-// Answer starts from below
+// Answer starts from below (BFS)
 
 class Solution {
 public:
@@ -31,29 +31,29 @@ public:
         }
         
         Node* first = new Node(node -> val, {}); // Make a copy to store first node
-        mp[node] = first;
+        mp[node] = first; // 
         
-        queue<Node*> q; // 
-        q.push(node); 
+        queue<Node*> q; // Create queue.
+        q.push(node); // add node to queue.
         
-        while(q.empty() == false) 
+        while(q.empty() == false) // Repeat until q becomes empty
         {
-            Node* curr = q.front(); 
-            q.pop(); 
+            Node* curr = q.front(); // Assign the first element of q to curr
+            q.pop(); // And remove the first element
             
-            for(auto adj: curr -> neighbors)
+            for(auto adj: curr -> neighbors) // Range based loop from neighbor of curr.
             {
-                if(mp.find(adj) == mp.end()) 
+                if(mp.find(adj) == mp.end()) // If nothing is in map
                 {
-                    mp[adj] = new Node(adj -> val, {}); 
-                    q.push(adj);
+                    mp[adj] = new Node(adj -> val, {}); // create copy
+                    q.push(adj); // and add adj to q.
                     
                 }
                 
-                mp[curr] -> neighbors.push_back(mp[adj]); // in current node push adjcant node
+                mp[curr] -> neighbors.push_back(mp[adj]); // push adj node to curr node
             }
         }
         
-        return mp[node];
+        return mp[node]; // Return a clone graph.
     }
 };
