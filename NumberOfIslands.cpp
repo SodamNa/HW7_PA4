@@ -15,7 +15,7 @@ public:
                 }
             }
         }
-        return num;
+        return num; // Return the number of islands.
     }
     
 private:
@@ -25,12 +25,10 @@ private:
             return; // End the recursion
 
         grid[i][j] = '0'; // To avoid duplication, mark the searched element as '0'
-        vector<int> dir({-1, 0, 1, 0, -1}); 
-        // int nums[] = {-1, 0, 1, 0, -1};
-        // vector<int> dir(nums, nums + sizeof(nums) / sizeof(int));
-        for (int idx = 0; idx < dir.size() - 1; idx++) {
-            int rowIdx = i + dir[idx]; 
-            int colIdx = j + dir[idx + 1];
+        vector<int> dir({-1, 0, 1, 0, -1}); // Direction to search surroundings 
+        for (int index = 0; index < dir.size() - 1; index++) {
+            int rowIdx = i + dir[index]; 
+            int colIdx = j + dir[index + 1];
             dfs(grid, rowIdx, colIdx);
         }
     }
